@@ -1,0 +1,77 @@
+/* CSS Document */
+
+html,body,.container {
+    height:100%;
+	
+}
+.container {
+    display:table;
+    width: 100%;
+    margin-top: -50px;
+    padding:0; /*set left/right padding according to needs*/
+    box-sizing: border-box;
+	
+	
+}
+
+
+.right{
+	background: black;
+	
+	
+	
+}
+.left{
+	
+	background:linear-gradient(0deg,#4B00FF 0%, #5263CF 100%);
+}
+.content{
+	padding-top: 10%;
+	color: white;
+	
+}
+h1{
+	font-size: 6em;
+}
+.register{
+	border-radius: 10em;
+	background: #000000;
+	color: white;
+	width: 20em;
+	height: 4em;
+	border: #000000
+}
+.register:hover{
+	background: linear-gradient(45deg,#4B00FF 0%, #000000 50%,#4B00FF 100%);
+	
+	color: honeydew;
+}
+.login{
+	text-align:left;
+	
+}
+.login p{
+		color:#5B5B5B;
+	}
+.signinbutton{
+	border-radius: 10em;
+	background: linear-gradient(0deg,#4B00FF 0%, #5263CF 100%);
+	color: white;
+	width: 20em;
+	height: 4em;
+	border: #000000
+}
+.signin{
+	border-radius: 10em;
+	background:#FFFFFF;
+	color: black;
+	padding: 5%;
+	width: 20em;
+	height: 4em;
+	border: #000000;
+	
+}
+.signform br{
+	display: block;
+   margin: 10px 0;
+}
