@@ -12,7 +12,6 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://ltoxbcumoikvjg:5e0189eb9f387
 #app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
-
 socketio = SocketIO(app)
 
 def main():
@@ -30,21 +29,22 @@ def home():
     if user is None:
         return "No such user"
     else:
-        if check_password_hash(user.password,password):
+        if check_password_hash(user.passhash,password):
             return "Logged In"
         else:
             return "Wrong Password"
+
 @app.route("/register",methods=["POST"])
 def register():
     username=request.form.get("username")
     password=request.form.get("password")
-    check=users.query.filter_by(username=username).all()
+    check=users.query.filter_by(username=username).first()
     if check is None:
         passhash=generate_password_hash(password, method='pbkdf2:sha256', salt_length=8)
         add=users(username=username,passhash=passhash)
         db.session.add(add)
         db.session.commit()
-        return url_for('index',message="Please login.")
+        return "SUCCESS"
     else:
         return "error"
 

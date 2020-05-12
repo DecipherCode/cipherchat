@@ -39,7 +39,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
       <script id="result" type="text/x-handlebars-template">
         <h2>&nbsp;Join the community!</h2><br> 
-        <form name="Registration">
+        <form name="Registration" method="POST" action="{{ url_for('register') }}">
           <p>&nbsp;Username:</p>	
           <input type="text" name="username" class="registerinput">
           <p><br>&nbsp;Password:</p>
