@@ -34,6 +34,20 @@ def home():
             return "Logged In"
         else:
             return "Wrong Password"
+@app.route("/register",methods=["POST"])
+def register():
+    username=request.form.get("username")
+    password=request.form.get("password")
+    check=users.query.filter_by(username=username).all()
+    if check is None:
+        passhash=generate_password_hash(password, method='pbkdf2:sha256', salt_length=8)
+        add=users(username=username,passhash=passhash)
+        db.session.add(add)
+        db.session.commit()
+        return url_for('index',message="Please login.")
+    else:
+        return "error"
+
 
 
 if __name__ == "__main__":
