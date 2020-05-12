@@ -8,18 +8,30 @@
     <!-- Bootstrap -->
 	<link href="{{ url_for('static', filename='css/bootstrap-4.4.1.css') }}" rel="stylesheet">
 	<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+	<script>
+	window.onload = () => {
+    document.querySelector('button').onclick = () => {
+		console.log("detected")
+		const element = event.target
+		element.parentElement.style.animationPlayState = 'running';
+		console.log(element.parentElement)	
+		console.log(element.parentElement.style.animationName)
+		}
+	}
+	</script>
   </head>
 <body>
   	<div class="container-fluid h-100">
   	  <div class="row h-100">
 		<div class="col-lg-6 left h-100">&nbsp;
 			<div class="content col-xl-7 offset-xl-2">
-			  <h1 >Are<br>
-			    You<br>
-			    New?</h1>
-				<button class="register btn" >Register</button>
-            </div>
-	    </div>
+			  	<h1 class="registration">Are<br>
+				You<br>
+		    	New?</h1>
+				<button type ="button" class="register btn">Register</button>
+			</div>
+  	    </div>
+      </div>
   	    <div class="col-lg-6 right h-100" >&nbsp;
 			<div class="content col-xl-7 login col-lg-6 offset-lg-3 offset-xl-4">
 			  <h2 >&nbsp;Welcome back!</h2><br>
@@ -41,14 +53,5 @@
   	    
       </div>
     </div>
-<!-- body code goes here -->
-
-
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-	<script src="js/jquery-3.4.1.min.js"></script>
-
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="js/popper.min.js"></script> 
-  <script src="js/bootstrap-4.4.1.js"></script>
   </body>
 </html>
