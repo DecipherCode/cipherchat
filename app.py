@@ -12,7 +12,6 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://ltoxbcumoikvjg:5e0189eb9f387
 #app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
-
 socketio = SocketIO(app)
 
 def main():
@@ -34,6 +33,7 @@ def home():
             return "Logged In"
         else:
             return "Wrong Password"
+
 @app.route("/register",methods=["POST"])
 def register():
     username=request.form.get("username")
@@ -44,7 +44,7 @@ def register():
         add=users(username=username,passhash=passhash)
         db.session.add(add)
         db.session.commit()
-        return url_for('index')
+        return "SUCCESS"
     else:
         return "error"
 
