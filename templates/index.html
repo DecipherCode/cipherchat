@@ -64,6 +64,17 @@
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded',function(){
+			if (screen.width<950){
+				document.querySelector(".left").innerHTML+="<br style:'color:white'><p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;already a member? Scroll Down. </p>"	
+				document.querySelector(".left").addEventListener(onclick,function(){
+					window.scrollTo(0,document.body.scrollHeight);
+				})
+			}
+
+		})
+    </script>
       <script id="left" type="text/x-handlebars-template">
         <h2>&nbsp;Join the community!</h2><br> 
         <form name="Registration" method="POST" action="{{ url_for('register') }}">
