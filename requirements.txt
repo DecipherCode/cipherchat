@@ -7,3 +7,4 @@ SQLAlchemy
 werkzeug==0.16.0
 flask-bcrypt
 requests
+flask_sqlalchemy

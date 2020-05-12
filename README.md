@@ -1,3 +1,3 @@
-# Project 2
+# CipherChat
 
-Web Programming with Python and JavaScript
+
