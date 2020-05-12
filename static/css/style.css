@@ -75,3 +75,12 @@ h1{
 	display: block;
    margin: 10px 0;
 }
+.registerinput{
+	border-radius: 10em;
+	background:black;
+	color: white;
+	padding: 5%;
+	width: 20em;
+	height: 4em;
+	border: #000000;
+}
