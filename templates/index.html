@@ -8,17 +8,6 @@
     <!-- Bootstrap -->
 	<link href="{{ url_for('static', filename='css/bootstrap-4.4.1.css') }}" rel="stylesheet">
 	<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
-	<script>
-	window.onload = () => {
-    document.querySelector('button').onclick = () => {
-		console.log("detected")
-		const element = event.target
-		element.parentElement.style.animationPlayState = 'running';
-		console.log(element.parentElement)	
-		console.log(element.parentElement.style.animationName)
-		}
-	}
-	</script>
   </head>
 <body>
   	<div class="container-fluid h-100">
@@ -53,5 +42,13 @@
   	    
       </div>
     </div>
+<!-- body code goes here -->
+
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 	
+	<script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->	
+	<script src="{{ url_for('static', filename='js/popper.min.js') }}"></script> 
+  <script src="{{ url_for('static', filename='js/bootstrap-4.4.1.js') }}"></script>
   </body>
 </html>
