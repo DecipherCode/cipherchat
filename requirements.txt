@@ -1,2 +1,9 @@
 Flask
 Flask-SocketIO
+gunicorn
+Flask-Session
+psycopg2-binary
+SQLAlchemy
+werkzeug==0.16.0
+flask-bcrypt
+requests
