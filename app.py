@@ -27,10 +27,10 @@ def home():
     password=request.form.get("password")
     user = users.query.filter_by(username=username).first()
     if user is None:
-        return "No such user"
+        return render_template('construction.html',message="Invalid username or password")
     else:
         if check_password_hash(user.passhash,password):
-            return "Logged In"
+            return render_template('construction.html',message="login successful!")
         else:
             return "Wrong Password"
 
@@ -44,9 +44,9 @@ def register():
         add=users(username=username,passhash=passhash)
         db.session.add(add)
         db.session.commit()
-        return "SUCCESS"
+        return render_template('construction.html',message="Account successfully created please go back and try to login :)")
     else:
-        return "error"
+        return render_template('construction.html',message="Something went wrong")
 
 
 
