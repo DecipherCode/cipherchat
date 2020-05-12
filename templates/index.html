@@ -13,8 +13,8 @@
             width: 734px;
             height: 417px;
             animation-name: fade;
-            animation-duration: 1s;
-            animation-fill-mode: forwards;
+            animation-duration: 2s;
+            animation-fill-mode: initial;
             opacity: 1;
             animation-play-state: paused;
         }
@@ -22,12 +22,31 @@
             0% {opacity: 1;}
             100% {opacity: 0;}
         }
+        @keyframes reappear{
+          0%{opacity: 0;}
+          100%{opacity: 1;}
+        }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+      <script id="result" type="text/x-handlebars-template">
+        <h2>&nbsp;Join the community!</h2><br> 
+        <form name="Registration">
+          <p>&nbsp;Username:</p>	
+          <input type="text" name="username" class="register">
+          <p><br>&nbsp;Password:</p>
+          <input type="password" name="password" class="register">
+          <br><br>					
+          <button type="submit" class="register btn">Register Now</button>
+        </form>
+      </script>
     <script>
         function vanish() {
             let element = document.getElementById("elementtofade")
-            console.log(element)
-            element.style.animationPlayState = 'running'
+            const template= Handlebars.compile(document.querySelector('#result').innerHTML);
+            element.style.animationPlayState = 'running';
+            const content = template({});
+            element.addEventListener('animationend', () =>  {
+              element.innerHTML = content;})
         }
     </script>
   </head>
