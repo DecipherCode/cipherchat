@@ -39,14 +39,14 @@ def register():
     username=request.form.get("username")
     password=request.form.get("password")
     check=users.query.filter_by(username=username).first()
-    if check is None:
+    if check is None and (len(username)>4 or len(password)>4) :
         passhash=generate_password_hash(password, method='pbkdf2:sha256', salt_length=8)
         add=users(username=username,passhash=passhash)
         db.session.add(add)
         db.session.commit()
         return render_template('construction.html',message="Account successfully created please go back and try to login :)")
     else:
-        return render_template('construction.html',message="Something went wrong")
+        return render_template('construction.html',message="Use another username/password. Maybe username or password is too short?. Or maybe the username is already taken")
 
 
 

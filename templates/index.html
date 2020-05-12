@@ -71,13 +71,26 @@
 				document.querySelector(".left").addEventListener(onclick,function(){
 					window.scrollTo(0,document.body.scrollHeight);
 				})
+        var a = document.querySelector("#signup").username.value;
+        var b = document.querySelector("#signup").password.value
+          if(a.length<4&&b.length<4)
+           {
+            document.querySelector("register btn").disabled=true;
+           }
+          else{
+            document.querySelector("register btn").disabled=false;
+          }
 			}
+      
 
-		})
+</script>
+      
+
+		
     </script>
       <script id="left" type="text/x-handlebars-template">
         <h2>&nbsp;Join the community!</h2><br> 
-        <form name="Registration" method="POST" action="{{ url_for('register') }}">
+        <form name="Registration" method="POST" id="signup" action="{{ url_for('register') }}">
           <p>&nbsp;Username:</p>	
           <input type="text" name="username" class="registerinput">
           <p><br>&nbsp;Password:</p>
