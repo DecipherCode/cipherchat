@@ -9,7 +9,4 @@ class users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, nullable=False)
     passhash = db.Column(db.String, nullable=False)
-    
-
-
 

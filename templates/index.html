@@ -75,17 +75,14 @@
   	    <div class="col-lg-6 right h-100" >&nbsp;
 			<div class="content col-xl-7 login col-lg-6 offset-lg-3 offset-xl-4">
 			  <h2 >&nbsp;Welcome back!</h2><br>
-				<form name="Sign In">
-				<p>&nbsp; Username:</p>	
-				<input type="text" class="signin">
+				<form action="{{ url_for('home') }}" name="Sign In" method="POST">
+				<p>&nbsp; Username:</p>
+				<input type="text" class="signin" name="username">
 				<p><br>
 				  &nbsp; Password:</p>
-				<input type="password" class="signin">
-				
-					<br><br>
-					<p>&nbsp;<input type="checkbox">
-				    &nbsp;Keep me logged in.</p>
-										
+				<input type="password" class="signin" name="password">
+				  <br><br>
+					<p>&nbsp;<input type="checkbox">&nbsp;Keep me logged in.</p>
 				<button type="submit" class="signinbutton">Submit</button>
 				</form>
             </div>
