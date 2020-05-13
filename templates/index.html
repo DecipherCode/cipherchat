@@ -1,172 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CipherChat</title>
     <!-- Bootstrap -->
-	<link href="{{ url_for('static', filename='css/bootstrap-4.4.1.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
-    <style>
-        #elementtofadeL{
-            position: relative;
-            animation-name: fadeL;
-            animation-duration: 1s;
-            animation-fill-mode: forwards;
-            opacity: 1;
-            animation-play-state: paused;
-        }
-        @keyframes fadeL{
-            0% {
-              opacity: 1;
-              left: 0%
-              }
-            50% {
-              opacity: 0;
-              left: 100%;
-            }
-            51%{
-              opacity: 0;
-              left: -100%
-            }
-            100% {
-              opacity: 1;
-              left: 0%;
-            }
-        }
-        
-        #elementtofadeR{
-            position: relative;
-            animation-name: fadeR;
-            animation-duration: 1s;
-            animation-fill-mode: forwards;
-            opacity: 1;
-            animation-play-state: paused;
-        }
-        @keyframes fadeR{
-            0% {
-              opacity: 1;
-              right: 0%
-              }
-            50% {
-              opacity: 0;
-              right: 100%;
-            }
-            51%{
-              opacity: 0;
-              right: -100%
-            }
-            100% {
-              opacity: 1;
-              right: 0%;
-            }
-        }
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded',function(){
-			if (screen.width<950){
-				document.querySelector(".left").innerHTML+="<br style:'color:white'><p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;already a member? Scroll Down. </p>"	
-				document.querySelector(".left").addEventListener(onclick,function(){
-					window.scrollTo(0,document.body.scrollHeight);
-				})
-        var a = document.querySelector("#signup").username.value;
-        var b = document.querySelector("#signup").password.value
-          if(a.length<4&&b.length<4)
-           {
-            document.querySelector("register btn").disabled=true;
-           }
-          else{
-            document.querySelector("register btn").disabled=false;
-          }
-			}
-      
-
-</script>
-      
-
-		
-    </script>
-      <script id="left" type="text/x-handlebars-template">
-        <h2>&nbsp;Join the community!</h2><br> 
-        <form name="Registration" method="POST" id="signup" action="{{ url_for('register') }}">
-          <p>&nbsp;Username:</p>	
-          <input type="text" name="username" class="registerinput">
-          <p><br>&nbsp;Password:</p>
-          <input type="password" name="password" class="registerinput">
-          <br><br>					
-          <button type="submit" class="register btn">Register Now</button>
-        </form>
-      </script>
-      <script id="right"  type="text/x-handlebars-template">
-        <h2 >&nbsp;Welcome back!</h2><br>
-				<form action="{{ url_for('home') }}" name="Sign In" method="POST">
-				<p>&nbsp; Username:</p>
-				<input type="text" class="signin" name="username">
-				<p><br>
-				  &nbsp; Password:</p>
-				<input type="password" class="signin" name="password">
-				  <br><br>
-					<p>&nbsp;<input type="checkbox">&nbsp;Keep me logged in.</p>
-				<button type="submit" class="signinbutton">Submit</button>
-        </form>
-      </script>
-    <script>
-        function vanishL() {
-            let element = document.getElementById("elementtofadeL")
-            const template= Handlebars.compile(document.querySelector('#left').innerHTML);
-            const content = template({});
-            element.style.animationPlayState = 'running';
-            setTimeout(() =>  {
-              element.innerHTML = content;},500);
-        }
-      </script>
-        <script>
-          function vanishR() {
-              let element = document.getElementById("elementtofadeR")
-              const template= Handlebars.compile(document.querySelector('#right').innerHTML);
-              const content = template({});
-              element.style.animationPlayState = 'running';
-              setTimeout(() =>  {
-                element.innerHTML = content;},500);
-          }
-      </script>
+  <link href="{{ url_for('static', filename='css/bootstrap-4.4.1.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+  <style>
+    #elementtofadeL{
+    position: relative;
+    animation-name: fadeL;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    opacity: 1;
+    animation-play-state: paused;
+    }
+    @keyframes fadeL{
+      0% {opacity: 1;left: 0;}
+      50% {opacity: 0;left: 100%;}
+      51%{opacity: 0;left: -100%}
+      100% {opacity: 1;left: 0%;}
+    }
+    #elementtofadeR{
+    position: relative;
+    animation-name: fadeR;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    opacity: 1;
+    animation-play-state: paused;
+    }
+    @keyframes fadeR{
+      0% {opacity: 1;right: 0;}
+      50% {opacity: 0;right: 100%;}
+      51%{opacity: 0;right: -100%}
+      100% {opacity: 1;right: 0%;}
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',function(){
+		if (screen.width<950)
+    {document.querySelector(".left").innerHTML+="<br style:'color:white'><p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;already a member? Scroll Down. </p>";}
+  </script>
+  <script id="left" type="text/x-handlebars-template">
+    <h2>&nbsp;Join the community!</h2><br> 
+    <form name="Registration" method="POST" id="signup" action="{{ url_for('register') }}">
+    <p>&nbsp;Username:</p>	
+    <input type="text" name="username" id ="username" class="registerinput">
+    <p><br>&nbsp;Password:</p>
+    <input type="password" name="password" id="password" class="registerinput">
+    <br><br>
+    <input type="checkbox" name="agree" id="agree" value="check validity" onclick="AgreeCheck()">&nbsp;Verify</input>
+    <br><br>
+    <button type="submit" class="register btn" id="sub" disabled="True">Register Now</button>
+    </form>
+  </script>
+  <script id="right"  type="text/x-handlebars-template">
+    <h2 >&nbsp;Welcome back!</h2><br>
+		<form action="{{ url_for('home') }}" name="Sign In" method="POST">
+		<p>&nbsp; Username:</p>
+		<input type="text" class="signin" name="username">
+		<p><br>&nbsp; Password:</p>
+		<input type="password" class="signin" name="password">
+		<br><br>
+		<p>&nbsp;<input type="checkbox">&nbsp;Keep me logged in.</p>
+		<button type="submit" class="signinbutton">Submit</button>
+    </form>
+  </script>
+  <script>
+    function vanishL() {
+      let element = document.getElementById("elementtofadeL")
+      const template= Handlebars.compile(document.querySelector('#left').innerHTML);
+      const content = template({});
+      element.style.animationPlayState = 'running';
+      setTimeout(() =>  {
+        element.innerHTML = content;},500);
+      }
+  </script>
+  <script>
+    function vanishR() {
+      let element = document.getElementById("elementtofadeR")
+      const template= Handlebars.compile(document.querySelector('#right').innerHTML);
+      const content = template({});
+      element.style.animationPlayState = 'running';
+      setTimeout(() =>  {
+        element.innerHTML = content;},500);
+      }
+  </script>
+  <script>
+    function check() {
+      var length = document.getElementById('username').value.length;
+      var lengthPass = document.getElementById('password').value.length;
+      if (length<5) {
+        alert("Sorry username too short! Must be 5 characters atleast");
+        return false }
+      if (lengthPass<8) {
+        alert("Password must be atleast 8 characters long!");
+        return false }
+      return true
+    }
+    function AgreeCheck() {
+      var verify = check();
+      document.getElementById("agree").checked = verify;
+      document.getElementById("sub").disabled = !verify;
+    }
+  </script>
   </head>
-<body>
+  <body>
   	<div class="container-fluid h-100">
   	  <div class="row h-100">
-		<div class="col-lg-6 left h-100">&nbsp;
-			<div class="content col-xl-7 offset-xl-2">
-                <div id="elementtofadeL">
-			  		<h1>Are<br>
-			   		You<br>
-			    	New?</h1>
-					<button class="register btn" onclick="vanishL()">Register</button>
-            	</div>
+		    <div class="col-lg-6 left h-100">&nbsp;
+			    <div class="content col-xl-7 offset-xl-2">
+            <div id="elementtofadeL">
+			  		  <h1>Are<br>
+			   		  You<br>
+			    	  New?</h1>
+					    <button class="register btn" onclick="vanishL()">Register</button>
             </div>
-		</div>
+          </div>
+		    </div>
   	    <div class="col-lg-6 right h-100" >&nbsp;
-			<div class="content col-xl-7 login col-lg-6 offset-lg-3 offset-xl-4">
-        <div id="elementtofadeR">
-          <h1>You<br>
-            Seem<br>
-           Familar...</h1>
-           <button class="signinbutton" onclick="vanishR()">I am!</button>
-        </div>
-        </div>
-	    </div>
-  	    
-      </div>
+			    <div class="content col-xl-7 login col-lg-6 offset-lg-3 offset-xl-4">
+            <div id="elementtofadeR">
+              <h1>You<br>
+              Seem<br>
+              Familar...</h1>
+              <button class="signinbutton" onclick="vanishR()">Log In</button>
+            </div>
+          </div>
+	      </div>
+  	  </div>
     </div>
-<!-- body code goes here -->
-
-
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-	<script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
-
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="{{ url_for('static', filename='js/popper.min.js')}}"></script> 
-  <script src="{{ url_for('static', filename='js/bootstrap-4.4.1.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
+	  <script src="{{ url_for('static', filename='js/popper.min.js')}}"></script> 
+    <script src="{{ url_for('static', filename='js/bootstrap-4.4.1.js')}}"></script>
   </body>
 </html>
