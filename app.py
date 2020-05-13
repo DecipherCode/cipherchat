@@ -30,7 +30,7 @@ def home():
         return render_template('construction.html',message="Invalid username or password")
     else:
         if check_password_hash(user.passhash,password):
-            return render_template('construction.html',message="login successful!")
+            return render_template("home.html")
         else:
             return "Wrong Password"
 
@@ -48,7 +48,8 @@ def register():
     else:
         return render_template('construction.html',message="Use another username/password. Maybe username or password is too short?. Or maybe the username is already taken")
 
-
+    
+    
 
 if __name__ == "__main__":
 # Allows for command line interaction with Flask application
