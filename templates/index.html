@@ -39,11 +39,7 @@
     }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded',function(){
-		if (screen.width<950)
-    {document.querySelector(".left").innerHTML+="<br style:'color:white'><p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;already a member? Scroll Down. </p>";}
-  </script>
+  <script src="{{ url_for('static', filename='js/index.js')}}"></script>
   <script id="left" type="text/x-handlebars-template">
     <h2>&nbsp;Join the community!</h2><br> 
     <form name="Registration" method="POST" id="signup" action="{{ url_for('register') }}">
@@ -52,7 +48,7 @@
     <p><br>&nbsp;Password:</p>
     <input type="password" name="password" id="password" class="registerinput">
     <br><br>
-    <input type="checkbox" name="agree" id="agree" value="check validity" onclick="AgreeCheck()">&nbsp;Verify Credentials<br>Warning! Once credentials meet our requirements you will not be able to make changes.</input>
+    <input type="checkbox" name="agree" id="agree" value="check validity" onclick="AgreeCheck()">&nbsp;Verify Credentials<br><span style="color:re">Warning!</span> Once credentials meet our requirements you will not be able to make changes.</input>
     <br><br>
     <button type="submit" class="register btn" id="sub" disabled="True">Register Now</button>
     </form>
@@ -69,46 +65,7 @@
 		<button type="submit" class="signinbutton">Submit</button>
     </form>
   </script>
-  <script>
-    function vanishL() {
-      let element = document.getElementById("elementtofadeL")
-      const template= Handlebars.compile(document.querySelector('#left').innerHTML);
-      const content = template({});
-      element.style.animationPlayState = 'running';
-      setTimeout(() =>  {
-        element.innerHTML = content;},350);
-      }
-  </script>
-  <script>
-    function vanishR() {
-      let element = document.getElementById("elementtofadeR")
-      const template= Handlebars.compile(document.querySelector('#right').innerHTML);
-      const content = template({});
-      element.style.animationPlayState = 'running';
-      setTimeout(() =>  {
-        element.innerHTML = content;},350);
-      }
-  </script>
-  <script>
-    function check() {
-      var length = document.getElementById('username').value.length;
-      var lengthPass = document.getElementById('password').value.length;
-      if (length<5) {
-        alert("Sorry username too short! Must be 5 characters atleast");
-        return false }
-      if (lengthPass<8) {
-        alert("Password must be atleast 8 characters long!");
-        return false }
-      return true
-    }
-    function AgreeCheck() {
-      var verify = check();
-      document.getElementById("agree").checked = verify;
-      document.getElementById("sub").disabled = !verify;
-      document.getElementById("username").disabled = verify;
-      document.getElementById("password").disabled = verify;
-    }
-  </script>
+
   </head>
   <body>
   	<div class="container-fluid h-100">
