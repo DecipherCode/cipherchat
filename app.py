@@ -2,9 +2,10 @@ import os
 
 from models import *
 
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,jsonify
 from flask_socketio import SocketIO, emit
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
@@ -48,7 +49,11 @@ def register():
     else:
         return render_template('construction.html',message="Use another username/password. Maybe username or password is too short?. Or maybe the username is already taken")
 
-
+@app.route("/API/usernames",methods = ["POST","GET"])
+def usernames():
+    usernames = db.session.query(users.username).all()
+    u_list = [usernames[i][0] for i in range(len(usernames))]
+    return jsonify({"users":u_list})
 
 if __name__ == "__main__":
 # Allows for command line interaction with Flask application
