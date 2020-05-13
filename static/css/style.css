@@ -41,11 +41,7 @@ h1{
 	height: 4em;
 	border: #000000
 }
-.register:hover{
-	background: linear-gradient(45deg,#4B00FF 0%, #000000 50%,#4B00FF 100%);
-	
-	color: honeydew;
-}
+
 .login{
 	text-align:left;
 	
