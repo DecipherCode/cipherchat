@@ -105,6 +105,8 @@
       var verify = check();
       document.getElementById("agree").checked = verify;
       document.getElementById("sub").disabled = !verify;
+      document.getElementById("username").disabled = verify;
+      document.getElementById("password").disabled = verify;
     }
   </script>
   </head>
