@@ -38,6 +38,16 @@
       100% {opacity: 1;right: 0%;}
     }
   </style>
+  <script>  
+  function request_usernames() {
+    const request = new XMLHttpRequest();
+    request.open('POST', '/API/usernames');
+    request.onload = () => {
+      data = JSON.parse(request.responseText)
+      alert("DATA RECEIVED")};
+      request.send();
+    }
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
   <script src="{{ url_for('static', filename='js/index.js')}}"></script>
   <script id="left" type="text/x-handlebars-template">
@@ -76,7 +86,7 @@
 			  		  <h1>Are<br>
 			   		  You<br>
 			    	  New?</h1>
-					    <button class="register btn" onclick="vanishL()">Register</button>
+					    <button class="register btn" onclick="vanishL();request_usernames()">Register</button>
             </div>
           </div>
 		    </div>

@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
 })
 
+
 function vanishL() {
     let element = document.getElementById("elementtofadeL")
     const template= Handlebars.compile(document.querySelector('#left').innerHTML);
@@ -23,7 +24,13 @@ function vanishR() {
 
 function check() {
     var length = document.getElementById('username').value.length;
+    var value =  document.getElementById('username').value;
     var lengthPass = document.getElementById('password').value.length;
+    console.log(data.users.includes(value))
+    if (data.users.includes(value)){
+        alert("Username exists");
+        return false
+    }
     if (length<5) {
         alert("Sorry username too short! Must be 5 characters atleast");
         return false }
@@ -32,7 +39,7 @@ function check() {
         return false }
     return true
     }
-    function AgreeCheck() {
+function AgreeCheck() {
         var verify = check();
         document.getElementById("agree").checked = verify;
         document.getElementById("sub").disabled = !verify;
