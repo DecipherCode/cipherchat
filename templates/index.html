@@ -12,7 +12,7 @@
     #elementtofadeL{
     position: relative;
     animation-name: fadeL;
-    animation-duration: 1s;
+    animation-duration: 0.75s;
     animation-fill-mode: forwards;
     opacity: 1;
     animation-play-state: paused;
@@ -26,7 +26,7 @@
     #elementtofadeR{
     position: relative;
     animation-name: fadeR;
-    animation-duration: 1s;
+    animation-duration: 0.75s;
     animation-fill-mode: forwards;
     opacity: 1;
     animation-play-state: paused;
@@ -52,7 +52,7 @@
     <p><br>&nbsp;Password:</p>
     <input type="password" name="password" id="password" class="registerinput">
     <br><br>
-    <input type="checkbox" name="agree" id="agree" value="check validity" onclick="AgreeCheck()">&nbsp;Verify</input>
+    <input type="checkbox" name="agree" id="agree" value="check validity" onclick="AgreeCheck()">&nbsp;Verify Credentials<br>Warning! Once credentials meet our requirements you will not be able to make changes.</input>
     <br><br>
     <button type="submit" class="register btn" id="sub" disabled="True">Register Now</button>
     </form>
@@ -76,7 +76,7 @@
       const content = template({});
       element.style.animationPlayState = 'running';
       setTimeout(() =>  {
-        element.innerHTML = content;},500);
+        element.innerHTML = content;},350);
       }
   </script>
   <script>
@@ -86,7 +86,7 @@
       const content = template({});
       element.style.animationPlayState = 'running';
       setTimeout(() =>  {
-        element.innerHTML = content;},500);
+        element.innerHTML = content;},350);
       }
   </script>
   <script>
