@@ -11,7 +11,17 @@ function vanishL() {
     element.style.animationPlayState = 'running';
     setTimeout(() =>  {
       element.innerHTML = content;},350);
+    document.getElementById("agree").disabled = true;
+    element.addEventListener('animationend', enable())
     }
+function enable() {
+    if (data_received){
+        document.getElementById("agree").disabled = false;
+    }
+    else{
+        setTimeout(enable(),300)
+    }
+}
 function vanishR() {
     let element = document.getElementById("elementtofadeR")
     const template= Handlebars.compile(document.querySelector('#right').innerHTML);
@@ -45,4 +55,3 @@ function AgreeCheck() {
         document.getElementById("username").disabled = verify;
         document.getElementById("password").disabled = verify;
     }
-    
