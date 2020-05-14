@@ -35,16 +35,23 @@ function check() {
     var length = document.getElementById('username').value.length;
     var value =  document.getElementById('username').value;
     var lengthPass = document.getElementById('password').value.length;
+    var gender=document.getElementById('gender').value;
+    var name=document.getElementById('name').value;
     console.log(data.users.includes(value))
     if (data.users.includes(value)){
         alert("Username exists");
-        return false
-    }
+        return false }
     if (length<5) {
         alert("Sorry username too short! Must be 5 characters atleast");
         return false }
     if (lengthPass<8) {
         alert("Password must be atleast 8 characters long!");
+        return false }
+    if (gender===null){
+        alert("Please specify your gender");
+        return false }
+    if (name===null){
+        alert("Please enter your name");
         return false }
     return true
     }
