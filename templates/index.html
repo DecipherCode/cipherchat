@@ -1,41 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CipherChat</title>
-    <!-- Bootstrap -->
+  <!-- Bootstrap -->
   <link href="{{ url_for('static', filename='css/bootstrap-4.4.1.css') }}" rel="stylesheet">
   <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
   <style>
-    #elementtofadeL{
-    position: relative;
-    animation-name: fadeL;
-    animation-duration: 0.75s;
-    animation-fill-mode: forwards;
-    opacity: 1;
-    animation-play-state: paused;
+    #elementtofadeL {
+      position: relative;
+      animation-name: fadeL;
+      animation-duration: 0.75s;
+      animation-fill-mode: forwards;
+      opacity: 1;
+      animation-play-state: paused;
     }
-    @keyframes fadeL{
-      0% {opacity: 1;left: 0;}
-      50% {opacity: 0;left: 100%;}
-      51%{opacity: 0;left: -100%}
-      100% {opacity: 1;left: 0%;}
+
+    @keyframes fadeL {
+      0% {
+        opacity: 1;
+        left: 0;
+      }
+
+      50% {
+        opacity: 0;
+        left: 100%;
+      }
+
+      51% {
+        opacity: 0;
+        left: -100%
+      }
+
+      100% {
+        opacity: 1;
+        left: 0%;
+      }
     }
-    #elementtofadeR{
-    position: relative;
-    animation-name: fadeR;
-    animation-duration: 0.75s;
-    animation-fill-mode: forwards;
-    opacity: 1;
-    animation-play-state: paused;
+
+    #elementtofadeR {
+      position: relative;
+      animation-name: fadeR;
+      animation-duration: 0.75s;
+      animation-fill-mode: forwards;
+      opacity: 1;
+      animation-play-state: paused;
     }
-    @keyframes fadeR{
-      0% {opacity: 1;right: 0;}
-      50% {opacity: 0;right: 100%;}
-      51%{opacity: 0;right: -100%}
-      100% {opacity: 1;right: 0%;}
+
+    @keyframes fadeR {
+      0% {
+        opacity: 1;
+        right: 0;
+      }
+
+      50% {
+        opacity: 0;
+        right: 100%;
+      }
+
+      51% {
+        opacity: 0;
+        right: -100%
+      }
+
+      100% {
+        opacity: 1;
+        right: 0%;
+      }
+    }
+
+    /* width */
+    ::-webkit-scrollbar {
+      width: 20px;
+
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px wheat;
+      border-radius: 10px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: rgb(223, 223, 223);
+      border-radius: 10px;
+      opacity: 50%;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4d4d4d;
     }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
@@ -63,7 +121,7 @@
     <button type="submit" class="register btn" id="sub" disabled="True">Register Now</button>
     </form>
   </script>
-  <script id="right"  type="text/x-handlebars-template">
+  <script id="right" type="text/x-handlebars-template">
     <h2 >&nbsp;Welcome back!</h2><br>
 		<form action="{{ url_for('home') }}" name="Sign In" method="POST">
 		<p>&nbsp; Username:</p>
@@ -76,48 +134,51 @@
     </form>
   </script>
   <script type="text/javascript">
-  data_received = false;
-  function request_usernames() {
-    if (!data_received){
-      const request = new XMLHttpRequest();
-      request.open('POST', '/API/usernames');
-      request.onload = () => {
-        data = JSON.parse(request.responseText)
-        data_received = true;
+    data_received = false;
+
+    function request_usernames() {
+      if (!data_received) {
+        const request = new XMLHttpRequest();
+        request.open('POST', '/API/usernames');
+        request.onload = () => {
+          data = JSON.parse(request.responseText)
+          data_received = true;
+        }
+        request.send();
       }
-    request.send();
-  }
-}
-  window.onload=request_usernames();
+    }
+    window.onload = request_usernames();
   </script>
-  </head>
-  <body> 
-  	<div class="container-fluid h-100">
-  	  <div class="row h-100">
-		    <div class="col-lg-6 left h-100">&nbsp;
-			    <div class="content col-xl-7 offset-xl-2">
-            <div id="elementtofadeL">
-			  		  <h1>Are<br>
-			   		  You<br>
-			    	  New?</h1>
-					    <button class="register btn" onclick="vanishL()">Register</button>
-            </div>
+</head>
+
+<body>
+  <div class="container-fluid h-100">
+    <div class="row h-100">
+      <div class="col-lg-6 left h-100" style="overflow: auto;">&nbsp;
+        <div class="content col-xl-7 offset-xl-2">
+          <div id="elementtofadeL">
+            <h1>Are<br>
+              You<br>
+              New?</h1>
+            <button class="register btn" onclick="vanishL()">Register</button>
           </div>
-		    </div>
-  	    <div class="col-lg-6 right h-100" >&nbsp;
-			    <div class="content col-xl-7 login col-lg-6 offset-lg-3 offset-xl-4">
-            <div id="elementtofadeR">
-              <h1>You<br>
+        </div>
+      </div>
+      <div class="col-lg-6 right h-100">&nbsp;
+        <div class="content col-xl-7 login col-lg-6 offset-lg-3 offset-xl-4">
+          <div id="elementtofadeR">
+            <h1>You<br>
               Seem<br>
               Familar...</h1>
-              <button class="signinbutton" onclick="vanishR()">Log In</button>
-            </div>
+            <button class="signinbutton" onclick="vanishR()">Log In</button>
           </div>
-	      </div>
-  	  </div>
+        </div>
+      </div>
     </div>
-    <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
-	  <script src="{{ url_for('static', filename='js/popper.min.js')}}"></script> 
-    <script src="{{ url_for('static', filename='js/bootstrap-4.4.1.js')}}"></script>
-  </body>
+  </div>
+  <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/popper.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap-4.4.1.js')}}"></script>
+</body>
+
 </html>
