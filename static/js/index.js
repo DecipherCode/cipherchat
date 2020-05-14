@@ -39,7 +39,7 @@ function check() {
         alert("Password must be atleast 8 characters long!");
         return false }
     if (value.search(" ")){
-        alert("Dont use spaces in username");
+        alert("Don't use spaces in username");
         return false;
     }
     return true
