@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded',function(){
     if (screen.width<950)
         document.querySelector(".left").innerHTML+="<br style:'color:white'><p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;already a member? Scroll Down. </p>";
-    request_usernames()
 })
 
 
@@ -46,3 +45,4 @@ function AgreeCheck() {
         document.getElementById("username").disabled = verify;
         document.getElementById("password").disabled = verify;
     }
+    
