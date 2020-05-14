@@ -1,5 +1,5 @@
 import os
-
+import datetime
 from models import *
 
 from flask import Flask,render_template,request,jsonify
@@ -18,9 +18,28 @@ socketio = SocketIO(app)
 def main():
     db.create_all()
 
-@app.route("/")
+@app.route("/",methods=["POST","GET"])
 def index():
-    return render_template('index.html')
+    if request.method == "POST":
+        name = request.form.get("name")
+        username=request.form.get("username")
+        gender=request.form.get("gender")
+        password=request.form.get("password")
+        passhash=generate_password_hash(password, method='pbkdf2:sha256', salt_length=8)
+        datetime = datetime.now()
+        if gender=='M':
+            avatar_id = 0
+        elif gender=='F':
+            avatar_id = 4
+        else:
+            avatar_id = 8
+        print(datetime)
+        user = userdata(name=name,username=username,gender=gender,passhash=passhash,datetime=datetime,avatar_id = avatar_id)
+        db.session.add(user)
+        db.session.commit()
+        return render_template('index.html')
+    else:
+        return render_template('index.html')
 
 @app.route("/home" ,methods=["POST"])
 def home():
@@ -34,20 +53,6 @@ def home():
             return render_template("home.html")
         else:
             return "Wrong Password"
-
-@app.route("/register",methods=["POST"])
-def register():
-    username=request.form.get("username")
-    password=request.form.get("password")
-    check=users.query.filter_by(username=username).first()
-    if check is None and (len(username)>4 or len(password)>4) :
-        passhash=generate_password_hash(password, method='pbkdf2:sha256', salt_length=8)
-        add=users(username=username,passhash=passhash)
-        db.session.add(add)
-        db.session.commit()
-        return render_template('construction.html',message="Account successfully created please go back and try to login :)")
-    else:
-        return render_template('construction.html',message="Use another username/password. Maybe username or password is too short?. Or maybe the username is already taken")
 
 @app.route("/API/usernames",methods = ["POST","GET"])
 def usernames():
