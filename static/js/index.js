@@ -25,8 +25,9 @@ function vanishR() {
 function check() {
     var length = document.getElementById('username').value.length;
     var value =  document.getElementById('username').value;
+    console.log(value.search(" "))
     var lengthPass = document.getElementById('password').value.length;
-    console.log(data.users.includes(value))
+    console.log(data.users.includes(value));
     if (data.users.includes(value)){
         alert("Username exists");
         return false
@@ -37,6 +38,10 @@ function check() {
     if (lengthPass<8) {
         alert("Password must be atleast 8 characters long!");
         return false }
+    if (value.search(" ")){
+        alert("Dont use spaces in username");
+        return false;
+    }
     return true
     }
 function AgreeCheck() {
