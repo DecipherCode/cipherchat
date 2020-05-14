@@ -15,24 +15,17 @@
 <body style="background: #000000">
 	<header>
       <!-- Fixed navbar -->
-      <nav class="navbar navbar-expand-md navbar-light fixed-top" style="background: #FFFFFF;font-weight: bold">
+      <nav class="navbar navbar-expand-md navbar-light fixed-top" style="background:#d4d4d4;font-weight: bold">
 		  <a class="navbar-brand"  href="#">Cipher<span style="color:#4D1EF0 ">Chat</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarCollapse">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"> <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> </li>
-            <li class="nav-item active"> <a class="nav-link" href="#">Browse Channels <span class="sr-only">(current)</span></a> </li>
-            <li class="nav-item dropdown"> 
-				<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#" style="color: black">Account <span class="sr-only">(current)</span></a> 
-				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="#">My Account</a>
-					<a class="dropdown-item" href="#">Settings</a>
-					<a class="dropdown-item" href="#">Delete My Account</a>
-				</div>
-			  </li>
-			  <li class="nav-item active "> <a class="nav-link" href="#">Logout <span class="sr-only">(current)&nbsp;</span></a> </li>
+            <li class="nav-item active"> <a class="nav-link" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a> </li>
+            <li class="nav-item active"> <a class="nav-link" href="#">My Channels <span class="sr-only">(current)</span></a> </li>
+            <li class="nav-item active"><a class="nav-link" href="#">Browse Channels <span class="sr-only">(current)</span></a> </li>
+			    <li class="nav-item active "> <a class="nav-link" href="#">My account <span class="sr-only">(current)&nbsp;</span></a> </li>
           </ul>
 </div>
       </nav>
