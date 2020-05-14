@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded',function(){
     if (screen.width<950)
         document.querySelector(".left").innerHTML+="<br style:'color:white'><p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;already a member? Scroll Down. </p>";
+    request_usernames()
 })
 
 
@@ -11,17 +12,7 @@ function vanishL() {
     element.style.animationPlayState = 'running';
     setTimeout(() =>  {
       element.innerHTML = content;},350);
-    document.getElementById("agree").disabled = true;
-    element.addEventListener('animationend', enable())
     }
-function enable() {
-    if (data_received){
-        document.getElementById("agree").disabled = false;
-    }
-    else{
-        setTimeout(enable(),300)
-    }
-}
 function vanishR() {
     let element = document.getElementById("elementtofadeR")
     const template= Handlebars.compile(document.querySelector('#right').innerHTML);
@@ -34,10 +25,9 @@ function vanishR() {
 function check() {
     var length = document.getElementById('username').value.length;
     var value =  document.getElementById('username').value;
+    console.log(value.search(" "))
     var lengthPass = document.getElementById('password').value.length;
-    var gender=document.getElementById('gender').value;
-    var name=document.getElementById('name').value;
-    console.log(data.users.includes(value))
+    console.log(data.users.includes(value));
     if (data.users.includes(value)){
         alert("Username exists");
         return false }
@@ -47,12 +37,19 @@ function check() {
     if (lengthPass<8) {
         alert("Password must be atleast 8 characters long!");
         return false }
+
     if (gender===null){
         alert("Please specify your gender");
         return false }
     if (name===null){
         alert("Please enter your name");
         return false }
+
+    if (value.search(" ")){
+        alert("Don't use spaces in username");
+        return false;
+    }
+
     return true
     }
 function AgreeCheck() {

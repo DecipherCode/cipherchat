@@ -58,7 +58,7 @@
     <p><br>&nbsp;Password:</p>
     <input type="password" name="password" id="password" class="registerinput">
     <br><br>
-    <input type="checkbox" name="agree" id="agree" value="check validity" onclick="AgreeCheck()">&nbsp;Verify Credentials<br><span style="color:red">Warning!</span> Once credentials meet our requirements you will not be able to make changes.</input>
+    <input type="checkbox" name="agree" id="agree" value="check validity" onclick="AgreeCheck()">&nbsp;Verify Credentials<br>Warning! Once credentials meet our requirements you will not be able to make changes.</input>
     <br><br>
     <button type="submit" class="register btn" id="sub" disabled="True">Register Now</button>
     </form>
@@ -83,10 +83,11 @@
       request.open('POST', '/API/usernames');
       request.onload = () => {
         data = JSON.parse(request.responseText)
-      request.send();
-      data_received = true;
-    }
+        data_received = true;
+      }
+    request.send();
   }
+}
   window.onload=request_usernames();
   </script>
   </head>
