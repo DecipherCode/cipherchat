@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded',function(){
     if (screen.width<950)
         document.querySelector(".left").innerHTML+="<br style:'color:white'><p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;already a member? Scroll Down. </p>";
-
 })
+
 
 function vanishL() {
     let element = document.getElementById("elementtofadeL")
@@ -11,7 +11,17 @@ function vanishL() {
     element.style.animationPlayState = 'running';
     setTimeout(() =>  {
       element.innerHTML = content;},350);
+    document.getElementById("agree").disabled = true;
+    element.addEventListener('animationend', enable())
     }
+function enable() {
+    if (data_received){
+        document.getElementById("agree").disabled = false;
+    }
+    else{
+        setTimeout(enable(),300)
+    }
+}
 function vanishR() {
     let element = document.getElementById("elementtofadeR")
     const template= Handlebars.compile(document.querySelector('#right').innerHTML);
@@ -23,7 +33,13 @@ function vanishR() {
 
 function check() {
     var length = document.getElementById('username').value.length;
+    var value =  document.getElementById('username').value;
     var lengthPass = document.getElementById('password').value.length;
+    console.log(data.users.includes(value))
+    if (data.users.includes(value)){
+        alert("Username exists");
+        return false
+    }
     if (length<5) {
         alert("Sorry username too short! Must be 5 characters atleast");
         return false }
@@ -32,7 +48,7 @@ function check() {
         return false }
     return true
     }
-    function AgreeCheck() {
+function AgreeCheck() {
         var verify = check();
         document.getElementById("agree").checked = verify;
         document.getElementById("sub").disabled = !verify;

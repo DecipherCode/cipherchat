@@ -83,3 +83,10 @@ h1{
 	height: 4em;
 	border: #000000;
 }
+.nav-item{
+	padding-left:30px;
+  padding-right:30px;
+	margin-left:30px;
+  
+}
+

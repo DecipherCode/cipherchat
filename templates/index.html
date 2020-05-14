@@ -39,6 +39,8 @@
     }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://rawgit.com/notifyjs/notifyjs/master/dist/notify.js"></script>
   <script src="{{ url_for('static', filename='js/index.js')}}"></script>
   <script id="left" type="text/x-handlebars-template">
     <h2>&nbsp;Join the community!</h2><br> 
@@ -48,7 +50,7 @@
     <p><br>&nbsp;Password:</p>
     <input type="password" name="password" id="password" class="registerinput">
     <br><br>
-    <input type="checkbox" name="agree" id="agree" value="check validity" onclick="AgreeCheck()">&nbsp;Verify Credentials<br><span style="color:re">Warning!</span> Once credentials meet our requirements you will not be able to make changes.</input>
+    <input type="checkbox" name="agree" id="agree" value="check validity" onclick="AgreeCheck()">&nbsp;Verify Credentials<br><span style="color:red">Warning!</span> Once credentials meet our requirements you will not be able to make changes.</input>
     <br><br>
     <button type="submit" class="register btn" id="sub" disabled="True">Register Now</button>
     </form>
@@ -65,9 +67,22 @@
 		<button type="submit" class="signinbutton">Submit</button>
     </form>
   </script>
-
+  <script type="text/javascript">
+  data_received = false;
+  function request_usernames() {
+    if (!data_received){
+      const request = new XMLHttpRequest();
+      request.open('POST', '/API/usernames');
+      request.onload = () => {
+        data = JSON.parse(request.responseText)
+      request.send();
+      data_received = true;
+    }
+  }
+  window.onload=request_usernames();
+  </script>
   </head>
-  <body>
+  <body> 
   	<div class="container-fluid h-100">
   	  <div class="row h-100">
 		    <div class="col-lg-6 left h-100">&nbsp;
