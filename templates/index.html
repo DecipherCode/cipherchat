@@ -45,8 +45,16 @@
   <script id="left" type="text/x-handlebars-template">
     <h2>&nbsp;Join the community!</h2><br> 
     <form name="Registration" method="POST" id="signup" action="{{ url_for('register') }}">
+    <p>&nbsp;Name:</p>	
+    <input type="text" name="name" id ="name" class="registerinput">
     <p>&nbsp;Username:</p>	
     <input type="text" name="username" id ="username" class="registerinput">
+    <p>&nbsp;Gender:</p>
+    <select id="gender" class="registerinput">
+      <option value="M">Male</option>
+      <option value="F">Female</option>
+      <option value="O">Others</option>
+    </select>
     <p><br>&nbsp;Password:</p>
     <input type="password" name="password" id="password" class="registerinput">
     <br><br>
