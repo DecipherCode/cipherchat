@@ -75,10 +75,11 @@
       request.open('POST', '/API/usernames');
       request.onload = () => {
         data = JSON.parse(request.responseText)
-      request.send();
-      data_received = true;
-    }
+        data_received = true;
+      }
+    request.send();
   }
+}
   window.onload=request_usernames();
   </script>
   </head>

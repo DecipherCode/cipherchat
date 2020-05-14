@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded',function(){
     if (screen.width<950)
         document.querySelector(".left").innerHTML+="<br style:'color:white'><p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;already a member? Scroll Down. </p>";
+    request_usernames()
 })
 
 
@@ -11,17 +12,7 @@ function vanishL() {
     element.style.animationPlayState = 'running';
     setTimeout(() =>  {
       element.innerHTML = content;},350);
-    document.getElementById("agree").disabled = true;
-    element.addEventListener('animationend', enable())
     }
-function enable() {
-    if (data_received){
-        document.getElementById("agree").disabled = false;
-    }
-    else{
-        setTimeout(enable(),300)
-    }
-}
 function vanishR() {
     let element = document.getElementById("elementtofadeR")
     const template= Handlebars.compile(document.querySelector('#right').innerHTML);
