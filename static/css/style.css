@@ -24,6 +24,7 @@ html,body,.container {
 .left{
 	
 	background:linear-gradient(0deg,#4B00FF 0%, #5263CF 100%);
+	padding-bottom: 3em;
 }
 .content{
 	padding-top: 10%;
@@ -90,3 +91,7 @@ h1{
   
 }
 
+.center{
+	margin-top: 10% ;
+	text-align: center;
+}

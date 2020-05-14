@@ -16,7 +16,7 @@ db.init_app(app)
 socketio = SocketIO(app)
 
 def main():
-    db.createall()
+    db.create_all()
 
 @app.route("/")
 def index():
