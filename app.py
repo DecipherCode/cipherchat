@@ -9,8 +9,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://rvlmycroyzfgkn:0eeb3d0d92220e66bbb4eb2c63f42a1ebdcd0c7bcba1c2a2f7fc268b5df20463@ec2-34-202-88-122.compute-1.amazonaws.com:5432/d6htgff90r5lfq"
-#app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
+#app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://rvlmycroyzfgkn:0eeb3d0d92220e66bbb4eb2c63f42a1ebdcd0c7bcba1c2a2f7fc268b5df20463@ec2-34-202-88-122.compute-1.amazonaws.com:5432/d6htgff90r5lfq"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
 socketio = SocketIO(app)
