@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded',function(){
-    //request_usernames()
+    request_usernames()
     if (screen.width<950){
         document.querySelector(".left").innerHTML+="<br style:'color:white'><p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;already a member? Scroll Down. </p>";}
 })
@@ -43,6 +43,10 @@ function validate() {
         alert("Please provide a username shorter than 20 characters!");
         return flag;
         }
+    if(data.users.includes(UNAME.value)){
+        alert("Sorry! That username is already taken");
+        return flag;
+    }
     if(PASS.value.length<8) {
         alert("Please ensure your password is longer than 8 characters!");
         return flag;
