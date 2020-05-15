@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded',function(){
-    if (screen.width<950)
-        document.querySelector(".left").innerHTML+="<br style:'color:white'><p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;already a member? Scroll Down. </p>";
-    request_usernames()
+    //request_usernames()
+    if (screen.width<950){
+        document.querySelector(".left").innerHTML+="<br style:'color:white'><p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;already a member? Scroll Down. </p>";}
 })
 
 
@@ -22,40 +22,36 @@ function vanishR() {
         element.innerHTML = content;},350);
     }
 
-function check() {
-    var length = document.getElementById('username').value.length;
-    var value =  document.getElementById('username').value;
-    console.log(value.search(" "))
-    var lengthPass = document.getElementById('password').value.length;
-    console.log(data.users.includes(value));
-    if (data.users.includes(value)){
-        alert("Username exists");
-        return false }
-    if (length<5) {
-        alert("Sorry username too short! Must be 5 characters atleast");
-        return false }
-    if (lengthPass<8) {
-        alert("Password must be atleast 8 characters long!");
-        return false }
-
-    if (gender===null){
-        alert("Please specify your gender");
-        return false }
-    if (name===null){
-        alert("Please enter your name");
-        return false }
-
-    if (value.search(" ")){
-        alert("Don't use spaces in username");
-        return false;
-    }
-
-    return true
-    }
-function AgreeCheck() {
-        var verify = check();
-        document.getElementById("agree").checked = verify;
-        document.getElementById("sub").disabled = !verify;
-        document.getElementById("username").disabled = verify;
-        document.getElementById("password").disabled = verify;
-    }
+function validate() {
+    flag = false;
+    var NAME =  document.getElementById('Name');
+    var UNAME = document.getElementById('username');
+    var PASS = document.getElementById('password');
+    if(NAME.value.length>30){
+        alert("Please provide a name shorter than 30 characters!");
+        return flag;
+        }
+    if(UNAME.value.length<5) {
+        alert("Please provide a username longer than 5 characters!");
+        return flag;
+        }
+    if(UNAME.value.length>20) {
+        alert("Please provide a username shorter than 20 characters!");
+        return flag;
+        }
+    if(UNAME.value.length>20) {
+        alert("Please provide a username shorter than 20 characters!");
+        return flag;
+        }
+    if(PASS.value.length<8) {
+        alert("Please ensure your password is longer than 8 characters!");
+        return flag;
+        }
+   if(PASS.value.length>20) {
+        alert("Please ensure your password is shorter than 20 characters!");
+        return flag;
+       }
+    flag = true;
+    alert("SUCCESS");    
+    return(flag); 
+  }
