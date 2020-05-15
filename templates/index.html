@@ -97,16 +97,14 @@
     }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script src="https://rawgit.com/notifyjs/notifyjs/master/dist/notify.js"></script>
-  <script src="{{ url_for('static', filename='js/index.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/index.js')}}"></script> 
   <script id="left" type="text/x-handlebars-template">
     <h2>&nbsp;Join the community!</h2><br> 
-    <form name="Registration" method="POST" id="signup" action="{{ url_for('index') }}">
+    <form name="Registration" method="POST" id="signup" action="{{ url_for('index') }}" onsubmit="return(validate());">
     <p>&nbsp;Name:</p>	
-    <input type="text" name="name" id ="name" class="registerinput">
-    <p>&nbsp;Username:</p>	
-    <input type="text" name="username" id ="username" class="registerinput">
+    <input type="text" name="Name" id ="Name" class="registerinput" required>
+    <p>&nbsp;Username:</p>
+    <input type="text" name="username" id ="username" class="registerinput" required>
     <p>&nbsp;Gender:</p>
     <select id="gender" name = "gender" class="registerinput">
       <option value="M">Male</option>
@@ -114,20 +112,18 @@
       <option value="O">Others</option>
     </select>
     <p><br>&nbsp;Password:</p>
-    <input type="password" name="password" id="password" class="registerinput">
+    <input type="password" name="password" id="password" class="registerinput" required>
     <br><br>
-    <input type="checkbox" name="agree" id="agree" value="check validity" onclick="AgreeCheck()">&nbsp;Verify Credentials<br>Warning! Once credentials meet our requirements you will not be able to make changes.</input>
-    <br><br>
-    <button type="submit" class="register btn" id="sub" disabled="True">Register Now</button>
+    <button type="submit" class="register btn" id="sub">Register Now</button>
     </form>
   </script>
   <script id="right" type="text/x-handlebars-template">
     <h2 >&nbsp;Welcome back!</h2><br>
 		<form action="{{ url_for('home') }}" name="Sign In" method="POST">
 		<p>&nbsp; Username:</p>
-		<input type="text" class="signin" name="username">
+		<input type="text" class="signin" name="Lusername" id="Lusername">
 		<p><br>&nbsp; Password:</p>
-		<input type="password" class="signin" name="password">
+		<input type="password" class="signin" name="Lpassword" id="Lpassword">
 		<br><br>
 		<p>&nbsp;<input type="checkbox">&nbsp;Keep me logged in.</p>
 		<button type="submit" class="signinbutton">Submit</button>
@@ -135,7 +131,6 @@
   </script>
   <script type="text/javascript">
     data_received = false;
-
     function request_usernames() {
       if (!data_received) {
         const request = new XMLHttpRequest();
@@ -147,10 +142,8 @@
         request.send();
       }
     }
-    window.onload = request_usernames();
   </script>
 </head>
-
 <body>
   <div class="container-fluid h-100">
     <div class="row h-100">
@@ -180,5 +173,4 @@
   <script src="{{ url_for('static', filename='js/popper.min.js')}}"></script>
   <script src="{{ url_for('static', filename='js/bootstrap-4.4.1.js')}}"></script>
 </body>
-
 </html>
