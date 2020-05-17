@@ -30,38 +30,6 @@
         left: 0%;
       }
     }
-
-    #elementtofadeR {
-      position: relative;
-      animation-name: fadeR;
-      animation-duration: 0.75s;
-      animation-fill-mode: forwards;
-      opacity: 1;
-      animation-play-state: paused;
-    }
-
-    @keyframes fadeR {
-      0% {
-        opacity: 1;
-        right: 0;
-      }
-
-      50% {
-        opacity: 0;
-        right: 100%;
-      }
-
-      51% {
-        opacity: 0;
-        right: -100%
-      }
-
-      100% {
-        opacity: 1;
-        right: 0%;
-      }
-    }
-
     /* width */
     ::-webkit-scrollbar {
       width: 20px;
@@ -107,18 +75,6 @@
     <button type="submit" class="register btn" id="sub">Register Now</button>
     </form>
   </script>
-  <script id="right" type="text/x-handlebars-template">
-    <h2 >&nbsp;Welcome back!</h2><br>
-		<form action="{{ url_for('home') }}" name="Sign In" method="POST">
-		<p>&nbsp; Username:</p>
-		<input type="text" class="signin" name="Lusername" id="Lusername">
-		<p><br>&nbsp; Password:</p>
-		<input type="password" class="signin" name="Lpassword" id="Lpassword">
-		<br><br>
-		<p>&nbsp;<input type="checkbox">&nbsp;Keep me logged in.</p>
-		<button type="submit" class="signinbutton">Submit</button>
-    </form>
-  </script>
   <script type="text/javascript">
     data_received = false;
     function request_usernames() {
@@ -142,11 +98,10 @@
             <button class="register btn" onclick="vanishL()">Register</button>
           </div>
 {% endblock %}
+
 {% block right_content %}
 <div id="elementtofadeR">
-  <h1>You<br>
-              Seem<br>
-              Familar...</h1>
-            <button class="signinbutton" onclick="vanishR()">Log In</button>
-          </div>
+<h1>Invalid<br>Credentials<br></h1>
+<button class="signinbutton" onclick="vanishR()">Try Again!</button>
+</div>
 {% endblock %}

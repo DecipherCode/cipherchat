@@ -1,0 +1,16 @@
+{% extends "layout_home.html" %}
+{% block left_content %}
+<!-- Left Content design (Registration_Success) -->
+{% endblock %}
+{% block right_content %}
+<h2>&nbsp;Welcome New User!</h2><br>
+<form action="{{ url_for('home') }}" name="Sign In" method="POST">
+<p>&nbsp; Username:</p>
+<input type="text" class="signin" name="Lusername" id="Lusername">
+<p><br>&nbsp; Password:</p>
+<input type="password" class="signin" name="Lpassword" id="Lpassword">
+<br><br>
+<p>&nbsp;<input type="checkbox">&nbsp;Keep me logged in.</p>
+<button type="submit" class="signinbutton">Submit</button>
+</form>
+{% endblock %}
