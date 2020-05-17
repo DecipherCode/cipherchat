@@ -21,7 +21,7 @@ def main():
 @app.route("/",methods=["POST","GET"])
 def index():
     if request.method == "GET":
-        return render_template('index.html')
+        return render_template('Registration_Success.html')
     else:
         name = request.form.get("Name")
         username=request.form.get("username")
@@ -45,7 +45,7 @@ def index():
 def home():
     username=request.form.get("username")
     password=request.form.get("password")
-    user = users.query.filter_by(username=username).first()
+    user = userdata.query.filter_by(username=username).first()
     if user is None:
         return render_template('construction.html',message="Invalid username or password")
     else:
