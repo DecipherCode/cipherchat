@@ -29,7 +29,7 @@ def index():
         if 'count' in session:
             return render_template('Login_Fail.html')
         else:
-            session['count'] = True
+            session['count'] = 1
             return render_template('index.html')
     else:
         name = request.form.get("Name")
