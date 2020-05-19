@@ -1,70 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Untitled Document</title>
-    <!-- Bootstrap -->
-	<link href="css/bootstrap-4.4.1.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
-	<script>
-		
-	</script>
-	  <style>
-img {
-   max-width:30%;
-  max-height: 30%;
-  height:auto;
-}
-</style>
-  </head>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cipher Account</title>
+  <link href="{{ url_for('static', filename='css/bootstrap-4.4.1.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+  <script></script>
+  <style>
+  img {
+    max-width:30%;
+    max-height: 30%;
+    height:auto;
+  }
+  </style>
+</head>
 <body style="background: #404040">
 	<header>
       <!-- Fixed navbar -->
-      <nav class="navbar navbar-expand-md navbar-light fixed-top" style="background: #d4d4d4;font-weight: bold">
-		  <a class="navbar-brand"  href="#">Cipher<span style="color:#4D1EF0 ">Chat</span></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarCollapse">
-          <ul class="navbar-nav ml-auto">
-           <li class="nav-item active"> <a class="nav-link" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a> </li>
-            <li class="nav-item active"> <a class="nav-link" href="#">My Channels <span class="sr-only">(current)</span></a> </li>
-            <li class="nav-item active"><a class="nav-link" href="#">Browse Channels <span class="sr-only">(current)</span></a> </li>
-			    <li class="nav-item active "> <a class="nav-link" href="#">My account <span class="sr-only">(current)&nbsp;</span></a> </li>
-          </ul>
-</div>
-      </nav>
-		
-    </header>
-<div class="row h-100 w-100">
-<div class="h-150 col-xl-3" style="background: black">
-</div>
-<div class="col-xl-9" style="text-align: center;padding-top: 10%">
-	<img src="img_avatar.png" alt="Avatar" style="border-radius: 50%;">
-  <div class="justify-content-center">	  
-	  
-	  <h2 style="text-align: center; color: white;margin: 0%">suryachereddy&nbsp;</h2>
-	</div>
-	<div class="justify-content-conter" style="color: antiquewhite">
-		<h1 style="font-size: 300%"><span style="font-weight: bolder">account details</span></h1>
-		<p style="text-align: left;padding-left: 30%">&nbsp;Name:<span style="text-align: right;color: white;font-size: 200%">&nbsp;Venkat Surya Teja</span></p>
-		<p style="text-align: left;padding-left: 30%">&nbsp;date joined:&nbsp;<span style="text-align: right;color: white;font-size: 200%">&nbsp;19-05-2020</span></p>
-	</div>
-	<div class="align-bottom">
-		<button class="signinbutton">Logout</button>
-	</div>
- 
-  &nbsp;
-
-</div>	
-
-	
-<script src="js/jquery-3.4.1.min.js"></script>
-
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/popper.min.js"></script> 
-  <script src="js/bootstrap-4.4.1.js"></script>
+    <nav class="navbar navbar-expand-md navbar-light fixed-top" style="background: #d4d4d4;font-weight: bold">
+	    <a class="navbar-brand"  href="#">Cipher<span style="color:#4D1EF0 ">Chat</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active"> <a class="nav-link" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a> </li>
+          <li class="nav-item active"> <a class="nav-link" href="#">My Channels <span class="sr-only">(current)</span></a> </li>
+          <li class="nav-item active"><a class="nav-link" href="#">Browse Channels <span class="sr-only">(current)</span></a> </li>
+			    <li class="nav-item active "> <a class="nav-link" href="{{url_for('my_account')}}">My account<span class="sr-only">(current)&nbsp;</span></a> </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <div class="row h-100 w-100">
+    <div class="h-150 col-xl-3" style="background: black">
+    </div>
+    <div class="col-xl-9" style="text-align: center;padding-top: 10%">
+      <div id="img">
+        <img src="{{ url_for('static', filename='avatars/0.png')}}" alt="Avatar" style="border-radius: 50%;">
+      </div>
+      <div class="justify-content-center">
+        <h2 style="text-align: center; color: white;margin: 0%">{{ data[0] }}&nbsp;</h2>
+	    </div>
+	    <div class="justify-content-conter" style="color: antiquewhite">
+		    <h1 style="font-size: 300%"><span style="font-weight: bolder">account details</span></h1>
+		    <p style="text-align: left;padding-left: 30%">&nbsp;Name:<span style="text-align: right;color: white;font-size: 200%">&nbsp;{{ data[1] }}</span></p>
+		    <p style="text-align: left;padding-left: 30%">&nbsp;date joined:&nbsp;<span style="text-align: right;color: white;font-size: 200%">&nbsp;{{ data[2] }}</span></p>
+	    </div>
+	    <div class="align-bottom">
+		    <button class="signinbutton">Logout</button>
+	    </div>
+    </div>
+  </div>	
+  <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/popper.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap-4.4.1.js')}}"></script>
 </body>
 </html>

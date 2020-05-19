@@ -14,7 +14,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 Session(app)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://rvlmycroyzfgkn:0eeb3d0d92220e66bbb4eb2c63f42a1ebdcd0c7bcba1c2a2f7fc268b5df20463@ec2-34-202-88-122.compute-1.amazonaws.com:5432/d6htgff90r5lfq"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://vtbmmyggvlgzwz:9cf3930178e70e2f50fa44b88d796dad32a5754eadb2e4587e4f03cfbf9f8ec3@ec2-54-161-208-31.compute-1.amazonaws.com:5432/d4c1d5i7fsv1ja"
 #app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
@@ -50,6 +50,12 @@ def index():
         db.session.commit()
         return render_template('Registration_Success.html')
 
+@app.route("/API/usernames",methods = ["POST","GET"])
+def usernames():
+    usernames = db.session.query(userdata.username).all()
+    u_list = [usernames[i][0] for i in range(len(usernames))]
+    return jsonify({"users":u_list})
+
 @app.route("/home" ,methods=["POST"])
 def home():
     username=request.form.get("Lusername")
@@ -60,15 +66,22 @@ def home():
         return redirect(url_for('index'))
     else:
         if check_password_hash(user.passhash,password):
+            session['id'] = user.id
+            print(session['id'])
             return render_template("home.html")
         else:
-            return "Wrong Password"
+            return redirect(url_for('index'))
 
-@app.route("/API/usernames",methods = ["POST","GET"])
-def usernames():
-    usernames = db.session.query(userdata.username).all()
-    u_list = [usernames[i][0] for i in range(len(usernames))]
-    return jsonify({"users":u_list})
+@app.route("/my_account")
+def my_account():
+    id = session['id']
+    user = userdata.query.get(id)
+    date = user.datetime.date()
+    data=[]
+    data.append(user.username)
+    data.append(user.name)
+    data.append(date)   
+    return render_template('account.html',data=data)
 
 if __name__ == "__main__":
 # Allows for command line interaction with Flask application
