@@ -2,13 +2,18 @@ import os
 import datetime
 from models import *
 
-from flask import Flask,render_template,request,jsonify
+from flask import Flask,session,render_template,request,jsonify,redirect,url_for
+from flask_session import Session
 from flask_socketio import SocketIO, emit
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
+Session(app)
+
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://rvlmycroyzfgkn:0eeb3d0d92220e66bbb4eb2c63f42a1ebdcd0c7bcba1c2a2f7fc268b5df20463@ec2-34-202-88-122.compute-1.amazonaws.com:5432/d6htgff90r5lfq"
 #app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -21,7 +26,11 @@ def main():
 @app.route("/",methods=["POST","GET"])
 def index():
     if request.method == "GET":
-        return render_template('Registration_Success.html')
+        if 'count' in session:
+            return render_template('Login_Fail.html')
+        else:
+            session['count'] = 1
+            return render_template('index.html')
     else:
         name = request.form.get("Name")
         username=request.form.get("username")
@@ -43,11 +52,12 @@ def index():
 
 @app.route("/home" ,methods=["POST"])
 def home():
-    username=request.form.get("username")
-    password=request.form.get("password")
+    username=request.form.get("Lusername")
+    password=request.form.get("Lpassword")
     user = userdata.query.filter_by(username=username).first()
+    print(user)
     if user is None:
-        return render_template('construction.html',message="Invalid username or password")
+        return redirect(url_for('index'))
     else:
         if check_password_hash(user.passhash,password):
             return render_template("home.html")
